@@ -42,6 +42,7 @@ export class AuthService {
             this.updateUserData(result.user);
           }).catch((error) => {
             window.alert(error.message)
+            this.router.navigate(['**']);
           })
       }
 
@@ -49,6 +50,9 @@ export class AuthService {
    async SignUp(email, password) {
     return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
       .then((result) => {
+        this.ngZone.run(() => {
+            this.router.navigate(['search']);
+          });
         /* Call the SendVerificaitonMail() function when new user sign 
         up and returns promise */
         this.updateUserData(result.user);
