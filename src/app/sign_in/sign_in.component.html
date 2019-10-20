@@ -1,0 +1,25 @@
+<div class="container">
+  <div [hidden]="submitted">
+    <h1>Sign In</h1>
+    <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control"
+               [(ngModel)]="email" name="email" ngModel email required>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control"
+               [(ngModel)]="password" name="password">
+      </div>
+      <div class ="button-row">
+        <button mat-raised-button [disabled]="!userForm.form.valid" (click)="auth.SignIn(email, password)">Submit</button>
+        <a mat-raised-button color="accent"  routerLink="/register">Register</a>
+      </div>
+      <button mat-raised-button color="warn" (click)="auth.googleSignin()">Login with Google</button>
+    </form> 
+  </div>
+  </div>
+
+  
