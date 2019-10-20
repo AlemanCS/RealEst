@@ -1,17 +1,19 @@
 import { Component } from '@angular/core';
-
-import { buttons } from '../buttons';
+import { AuthService } from '../services/auth.service';
 
 @Component({
-    selector: 'app-top-bar',
-    templateUrl: './sign_in.component.html',
-    styleUrls: ['./sign_in.component.css']
+  selector: 'app-form',
+  templateUrl: './sign_in.component.html',
+  styleUrls: ['./sign_in.component.css']
 })
+export class SignInComponent {
+   
+   submitted = false;
 
-export class SignInComponent{
-    buttons = buttons;
+   onSubmit() { this.submitted = true; }
+
+
+   constructor(
+       public auth: AuthService) {}
 
 }
-
-
-
